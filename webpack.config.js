@@ -8,7 +8,7 @@ var webpack = require('webpack')
 module.exports = {
     entry: {
         main: './src/js/main.js',
-        style: './src/scss/bootstrap.scss'
+	style: './src/scss/bootstrap.scss'
     },
     output: {
         path: path.join(__dirname, 'www'),
@@ -28,9 +28,13 @@ module.exports = {
                 loader: 'html'
             },
             {
+                test: /\.css$/,
+                loader: "style!css"
+	    },
+	               {
                 test: /\.scss$/,
                 loader: "style!css!sass?outputStyle=expanded"
-            },
+		},
             {
                 test: [/\.svg/, /\.eot/, /\.ttf/, /\.woff/],
                 loader: 'file?name=fonts/[name].[ext]'
@@ -60,8 +64,8 @@ module.exports = {
             'node_modules'
         ],
         alias: {// If the the key ends with $ only the exact match (without the $) will be replaced.
-            "ionic$": 'ionic/js/ionic.js',
-            "ionic-angular": 'ionic/js/ionic-angular.js'
+            "ionic$": 'ionic/release/js/ionic.js',
+            "ionic-angular": 'ionic/release/js/ionic-angular.js'
         }
     },
     plugins: [
