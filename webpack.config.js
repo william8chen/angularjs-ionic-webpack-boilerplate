@@ -8,6 +8,7 @@ var webpack = require('webpack')
 module.exports = {
     entry: {
         main: './src/js/main.js',
+	vendor: ["angular","ionic", "ionic-angular", "angular-animate","angular-sanitize"],
 	style: './src/scss/bootstrap.scss'
     },
     output: {
@@ -69,6 +70,7 @@ module.exports = {
         }
     },
     plugins: [
+	      new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"js/vendor.bundle.js"),
         new webpack.ResolverPlugin(
                 new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin(
                         'bower.json', ['main'])
